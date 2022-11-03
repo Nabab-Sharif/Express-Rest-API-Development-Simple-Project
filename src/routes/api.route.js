@@ -6,6 +6,7 @@ const ProfileController=require("../controllers/ProfileController");
 
 
 router.post("/CreateProfile",ProfileController.CreateProfile);
+router.post("/UserLogin",ProfileController.UserLogin);
 
 
 
