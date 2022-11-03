@@ -46,7 +46,7 @@ mongoose.connect(URI, OPTION, (error) => {
 })
 
 
-//Routing Implement 
+//Routing Implement
 app.use("/api/v1", router);
 
 
@@ -54,6 +54,7 @@ app.use("/api/v1", router);
 app.use("*", (req, res) => {
   res.status(404).json({ status: "fail", data: "Not Found" });
 })
+
 
 
 module.exports = app;
