@@ -2,6 +2,8 @@
 const ProfileModel = require("../models/ProfileModel");
 const jwt = require('jsonwebtoken');
 
+
+
 exports.CreateProfile = (req, res) => {
 
   const reqBody = req.body;
@@ -14,6 +16,7 @@ exports.CreateProfile = (req, res) => {
   })
 
 }
+
 
 exports.UserLogin = (req, res) => {
   const UserName = req.body["UserName"];
@@ -41,5 +44,16 @@ exports.UserLogin = (req, res) => {
     }
 
 
+  })
+}
+
+exports.SelectProfile = (req, res) => {
+  const UserName = ""
+  ProfileModel.find({ UserName: UserName }, (err, data) => {
+    if (err) {
+      res.status(400).json({ status: "fail", data: err });
+    } else {
+      res.status(200).json({ status: "success", data: data });
+    }
   })
 }

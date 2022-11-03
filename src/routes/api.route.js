@@ -1,14 +1,15 @@
 
-const express=require("express");
-const router=express.Router();
-const ProfileController=require("../controllers/ProfileController");
+const express = require("express");
+const router = express.Router();
+const ProfileController = require("../controllers/ProfileController");
+const AuthVerifyMiddleware = require("../middleware/LoginAuthVerifyMiddleware");
+
+
+router.post("/CreateProfile", ProfileController.CreateProfile);
+router.post("/UserLogin", ProfileController.UserLogin);
+router.get("/SelectProfile", AuthVerifyMiddleware, ProfileController.SelectProfile);
 
 
 
-router.post("/CreateProfile",ProfileController.CreateProfile);
-router.post("/UserLogin",ProfileController.UserLogin);
 
-
-
-
-module.exports=router;
+module.exports = router;
