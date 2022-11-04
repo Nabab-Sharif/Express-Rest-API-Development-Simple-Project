@@ -48,7 +48,8 @@ exports.UserLogin = (req, res) => {
 }
 
 exports.SelectProfile = (req, res) => {
-  const UserName = ""
+  const UserName = req.headers['username'];
+
   ProfileModel.find({ UserName: UserName }, (err, data) => {
     if (err) {
       res.status(400).json({ status: "fail", data: err });

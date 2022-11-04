@@ -10,6 +10,10 @@ module.exports = (req, res, next) => {
     if (err) {
       res.status(401).json({ status: "unauthorized" });
     } else {
+
+      //Get User Name From Decoded Token and Add With Req Header
+      const username = decoded['data']['UserName'];
+      req.headers.username = username
       next();
     }
 

@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const ProfileController = require("../controllers/ProfileController");
-const AuthVerifyMiddleware = require("../middleware/LoginAuthVerifyMiddleware");
+const AuthVerifyMiddleware = require("../middleware/AuthVerifyMiddleware");
 
 
 router.post("/CreateProfile", ProfileController.CreateProfile);
