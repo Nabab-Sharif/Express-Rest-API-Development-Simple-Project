@@ -12,6 +12,7 @@ router.get("/SelectProfile", AuthVerifyMiddleware, ProfileController.SelectProfi
 router.post("/UpdateProfile", AuthVerifyMiddleware, ProfileController.UpdateProfile)
 
 router.post("/CreateTodo", AuthVerifyMiddleware, TodoListController.CreateTodo);
+router.get("/SelectTodo",AuthVerifyMiddleware,TodoListController.SelectTodo);
 
 
 module.exports = router;

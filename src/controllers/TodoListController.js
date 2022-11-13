@@ -1,6 +1,7 @@
 
 const TodoListModel = require("../models/TodoListModel");
 
+
 exports.CreateTodo = (req, res) => {
   const reqBody = req.body;
 
@@ -32,3 +33,16 @@ exports.CreateTodo = (req, res) => {
 
 }
 
+//SelectTodo List 
+exports.SelectTodo = (req, res) => {
+
+  const UserName = req.headers['username'];
+  
+  TodoListModel.find({ UserName: UserName }, (err, data) => {
+    if (err) {
+      res.status(400).json({ status: "fail", data: err });
+    } else {
+      res.status(200).json({ status: "success", data: data });
+    }
+  })
+}
