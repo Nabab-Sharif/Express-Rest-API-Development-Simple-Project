@@ -12,7 +12,6 @@ exports.CreateTodo = (req, res) => {
   const TodoCreateDate = Date.now();
   const TodoUpdateDate = Date.now();
 
-
   const PostBody = {
     UserName: UserName,
     TodoSubject: TodoSubject,
@@ -37,7 +36,7 @@ exports.CreateTodo = (req, res) => {
 exports.SelectTodo = (req, res) => {
 
   const UserName = req.headers['username'];
-  
+
   TodoListModel.find({ UserName: UserName }, (err, data) => {
     if (err) {
       res.status(400).json({ status: "fail", data: err });
@@ -45,4 +44,32 @@ exports.SelectTodo = (req, res) => {
       res.status(200).json({ status: "success", data: data });
     }
   })
+
+}
+
+exports.UpdateTodo = (req, res) => {
+
+  const TodoSubject = req.body['TodoSubject'];
+  const TodoDescription = req.body['TodoDescription'];
+  const _id = req.body['_id'];
+  const TodoUpdateDate = Date.now();
+
+  const PostBody = {
+    TodoSubject: TodoSubject,
+    TodoDescription: TodoDescription,
+    TodoUpdateDate: TodoUpdateDate,
+  }
+
+  TodoListModel.updateOne({ _id: _id }, { $set: PostBody }, { upsert: true }, (err, data) => {
+
+    if (err) {
+      res.status(400).json({ status: "fail", data: err })
+    } else {
+      res.status(200).json({ status: "success", data: data });
+    }
+
+
+  })
+
+
 }
