@@ -14,6 +14,7 @@ router.post("/UpdateProfile", AuthVerifyMiddleware, ProfileController.UpdateProf
 router.post("/CreateTodo", AuthVerifyMiddleware, TodoListController.CreateTodo);
 router.get("/SelectTodo",AuthVerifyMiddleware,TodoListController.SelectTodo);
 router.post("/UpdateTodo",AuthVerifyMiddleware,TodoListController.UpdateTodo);
+router.post("/UpdateStatusTodo",AuthVerifyMiddleware,TodoListController.UpdateStatusTodo);
 
 
 

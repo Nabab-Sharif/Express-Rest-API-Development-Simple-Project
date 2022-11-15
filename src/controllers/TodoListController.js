@@ -47,6 +47,7 @@ exports.SelectTodo = (req, res) => {
 
 }
 
+
 exports.UpdateTodo = (req, res) => {
 
   const TodoSubject = req.body['TodoSubject'];
@@ -68,8 +69,26 @@ exports.UpdateTodo = (req, res) => {
       res.status(200).json({ status: "success", data: data });
     }
 
-
   })
 
 
+}
+
+exports.UpdateStatusTodo = (req, res) => {
+  const TodoStatus = req.body['TodoStatus'];
+  const _id = req.body['_id'];
+  const TodoUpdateDate = Date.now();
+
+  const PostBody = {
+    TodoStatus: TodoStatus,
+    TodoUpdateDate: TodoUpdateDate,
+  }
+
+  TodoListModel.updateOne({ _id: _id }, { $set: PostBody }, { upsert: true }, (err, data) => {
+    if (err) {
+      res.status(400).json({ status: "fail", data: err });
+    } else {
+      res.status(200).json({ status: "success", data: data });
+    }
+  })
 }
