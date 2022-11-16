@@ -92,3 +92,20 @@ exports.UpdateStatusTodo = (req, res) => {
     }
   })
 }
+
+
+
+exports.RemoveTodo = (req, res) => {
+
+  const _id = req.body['_id'];
+
+  TodoListModel.remove({ _id: _id }, (err, data) => {
+
+    if (err) {
+      res.status(400).json({ status: "fail", data: err });
+    } else {
+      res.status(200).json({ status: "success", data: data });
+    }
+
+  })
+}
