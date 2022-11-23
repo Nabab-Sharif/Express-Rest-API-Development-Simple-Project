@@ -12,11 +12,12 @@ router.get("/SelectProfile", AuthVerifyMiddleware, ProfileController.SelectProfi
 router.post("/UpdateProfile", AuthVerifyMiddleware, ProfileController.UpdateProfile)
 
 router.post("/CreateTodo", AuthVerifyMiddleware, TodoListController.CreateTodo);
-router.get("/SelectTodo",AuthVerifyMiddleware,TodoListController.SelectTodo);
-router.post("/UpdateTodo",AuthVerifyMiddleware,TodoListController.UpdateTodo);
-router.post("/UpdateStatusTodo",AuthVerifyMiddleware,TodoListController.UpdateStatusTodo);
-router.post("/RemoveTodo",AuthVerifyMiddleware,TodoListController.RemoveTodo);
-router.post("/SelectTodoStatus",AuthVerifyMiddleware,TodoListController.SelectTodoStatus);
+router.get("/SelectTodo", AuthVerifyMiddleware, TodoListController.SelectTodo);
+router.post("/UpdateTodo", AuthVerifyMiddleware, TodoListController.UpdateTodo);
+router.post("/UpdateStatusTodo", AuthVerifyMiddleware, TodoListController.UpdateStatusTodo);
+router.post("/RemoveTodo", AuthVerifyMiddleware, TodoListController.RemoveTodo);
+router.post("/SelectTodoStatus", AuthVerifyMiddleware, TodoListController.SelectTodoStatus);
+router.post("/SelectTodoByDate", AuthVerifyMiddleware, TodoListController.SelectTodoByDate);
 
 
 
